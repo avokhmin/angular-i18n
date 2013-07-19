@@ -1,8 +1,93 @@
 angular-i18n
 ============
 
-<a href="#en">English version</a> | <a href="http://tanz-sullamora.github.com/angular-i18n/">Demo</a>
+AngularJS rails gem, localization filter. Currently supports english, russian, german plural forms.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'angular-i18n'
+
+And then execute:
+
+    $ bundle
+
+Then, add the asset to your application.js.
+
+    //= require angular-i18n
+
+[Russian version](#ru) | [Demo](http://avokhmin.github.com/angular-i18n/)
+
+English
+============
+
+Using:
+-------
+
+### regular text:
+in template:
+
+    {{'Hello, world'|i18n}}
+
+in locales.js:
+
+    var _locales = { 'ru-ru': { 'Hello, world': 'Привет, мир' }, 'en-us': { 'Hello, world': 'Hello, world' } };
+
+### variables:
+in template:
+
+    {{'%1 apple. Happy %2'|i18n:'Red':'boy'}}
+    
+in locales.js:
+
+    var _locales = { 'ru-ru': { '%1 apple. Happy %2': '%1 яблоко. Счастливый %2' }, 'en-us': { '%1 apple. Happy %2': '%1 apple. Happy %2' } };
+
+### plural forms:
+in template:
+
+    {{'There is %1 apple in %2 basket'|i18n:'plural':4:'my'}}
+    
+in locales.js:
+
+    var _locales = {
+         'ru-ru': {
+             'There is %1 apple in %2 basket': [
+                 'Всего %1 яблоко в %2 корзине',
+                 'Всего %1 яблока в %2 корзине',
+                 'Всего %1 яблок в %2 корзине'
+             ]
+         },
+         'en-us': {
+             'There is %1 apple in %2 basket': [
+                 'There is %1 apple in %2 basket',
+                 'There are %1 apples in %2 basket',
+             ]
+         }
+     }
+
+### in js:
+in controller:
+
+    $filter('i18n')('String in js');
+
+or
+
+    i18nFilter('String in js');
+    
+in locales.js:
+
+    var _locales = { 'ru-ru': { 'String in js': 'Строка в js' }, 'en-us': { 'String in js': 'String in js' } };
+
+with variables:
+
+    $filter('i18n')('Current locale: %1', $locale.id);
+    
+in locales.js:
+
+    var _locales = { 'ru-ru': { 'Current locale: %1': 'Текущая локаль: %1' }, 'en-us': { 'Current locale: %1': 'Current locale: %1' } };
+
+<a name="ru"></a>
 Фильтр для локализации. Реализована поддержка для множественных форм русского, английского и немецкого языков.
 
 Использование:
@@ -70,76 +155,3 @@ angular-i18n
 в файле locales.js:
 
      var _locales = { 'ru-ru': { 'Текущая локаль: %1': 'Текущая локаль: %1' }, 'en-us': { 'Текущая локаль: %1': 'Current locale: %1' } };
-
-
-<a name="en"></a>
-English
-============
-
-Localization fliter. Currently supports english, russian, german plural forms.
-
-Using:
--------
-
-### regular text:
-in template:
-
-    {{'Hello, world'|i18n}}
-
-in locales.js:
-
-    var _locales = { 'ru-ru': { 'Hello, world': 'Привет, мир' }, 'en-us': { 'Hello, world': 'Hello, world' } };
-
-### variables:
-in template:
-
-    {{'%1 apple. Happy %2'|i18n:'Red':'boy'}}
-    
-in locales.js:
-
-    var _locales = { 'ru-ru': { '%1 apple. Happy %2': '%1 яблоко. Счастливый %2' }, 'en-us': { '%1 apple. Happy %2': '%1 apple. Happy %2' } };
-
-### plural forms:
-in template:
-
-    {{'There is %1 apple in %2 basket'|i18n:'plural':4:'my'}}
-    
-in locales.js:
-
-    var _locales = {
-         'ru-ru': {
-             'There is %1 apple in %2 basket': [
-                 'Всего %1 яблоко в %2 корзине',
-                 'Всего %1 яблока в %2 корзине',
-                 'Всего %1 яблок в %2 корзине'
-             ]
-         },
-         'en-us': {
-             'There is %1 apple in %2 basket': [
-                 'There is %1 apple in %2 basket',
-                 'There are %1 apples in %2 basket',
-             ]
-         }
-     }
-
-### in js:
-in controller:
-
-    $filter('i18n')('String in js');
-
-or
-
-    i18nFilter('String in js');
-    
-in locales.js:
-
-    var _locales = { 'ru-ru': { 'String in js': 'Строка в js' }, 'en-us': { 'String in js': 'String in js' } };
-
-with variables:
-
-    $filter('i18n')('Current locale: %1', $locale.id);
-    
-in locales.js:
-
-    var _locales = { 'ru-ru': { 'Current locale: %1': 'Текущая локаль: %1' }, 'en-us': { 'Current locale: %1': 'Current locale: %1' } };
-
