@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['avokhmin@gmail.com']
   gem.description   = %q{AngularJS localization filter}
   gem.summary       = %q{AngularJS rails gem which you can load into any rails project for use localization filter}
-  gem.homepage      = ""
+  gem.homepage      = 'https://github.com/avokhmin/angular-i18n'
 
   gem.files = Dir['lib/**/*.rb'] + Dir['vendor/assets/javascripts/*.js']
 
