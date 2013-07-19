@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angular-i18n', []);
-angular.module('angular-i18n', []).filter('i18n', function($locale) {
+angular.module('angular-i18n', []).filter('i18n', ['$locale', function($locale) {
 	return function(str) {
 		var offset = 1;
 		if (arguments[1] && arguments[1] === 'plural') {
@@ -37,4 +37,4 @@ angular.module('angular-i18n', []).filter('i18n', function($locale) {
 
 		return str;
 	}
-});
+}]);
