@@ -2,7 +2,7 @@
 
 
 /* тестовое приложение */
-angular.module('test-app', ['tanzFilters']);
+angular.module('test-app', ['angular-i18n']);
 
 function test($scope, $locale, $filter) {
 	$scope.q = 0;

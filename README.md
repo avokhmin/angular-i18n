@@ -13,6 +13,10 @@ And then execute:
 
     $ bundle
 
+In your module definition, include the "angular-i18n" module
+
+    var module = angular.module('mySpecialModule', ['angular-i18n']).
+
 Then, add the asset to your application.js.
 
     //= require angular-i18n

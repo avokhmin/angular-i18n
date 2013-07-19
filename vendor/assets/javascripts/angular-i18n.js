@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tanzFilters', []);
-angular.module('tanzFilters', []).filter('i18n', function($locale) {
+angular.module('angular-i18n', []);
+angular.module('angular-i18n', []).filter('i18n', function($locale) {
 	return function(str) {
 		var offset = 1;
 		if (arguments[1] && arguments[1] === 'plural') {
